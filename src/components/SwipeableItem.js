@@ -60,8 +60,6 @@ function SwipeableItem (props) {
 				}
 		}
 
-		// e.preventDefault();
-		
 		// performs reset
 		setData({
 			startX: null,
@@ -91,7 +89,6 @@ function SwipeableItem (props) {
 			onMouseMove={handleMouseMove}
 
 			onTouchStart={handleTouchStart}
-			// onTouchEnd={handleTouchEnd}
 			onTouchMove={handleTouchMove}
 		>
 			{props.children}

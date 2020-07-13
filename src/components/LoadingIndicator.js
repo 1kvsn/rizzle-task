@@ -1,5 +1,6 @@
 import React from 'react';
 
+// not in use right now
 function LoadingIndicator(props) {
 	return (
 		<div className="center loader">

@@ -9,7 +9,6 @@ function VideoItem (props) {
 			<video 
 				className="video" 
 				preload="auto"
-				muted
 				controls 
 				autoPlay
 				key={id}
