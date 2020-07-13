@@ -5,7 +5,7 @@ function VideoItem (props) {
 	const { id, video } = props.video;
 
 	return (
-		<div>
+		<div className="video-container">
 			<video 
 				className="video" 
 				preload="auto"
