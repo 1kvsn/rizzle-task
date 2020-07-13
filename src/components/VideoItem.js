@@ -19,7 +19,6 @@ function VideoItem (props) {
 					Your browser does not support the video tag.
 			</video>
 		</div>
-	
 	)
 }
 

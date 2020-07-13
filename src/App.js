@@ -17,7 +17,7 @@ import {
 
 
 function App () {
-  const [currentVideoIndex, setCurrentVideoIndex] = React.useState(20);
+  const [currentVideoIndex, setCurrentVideoIndex] = React.useState(DEFAULT_VIDEO_INDEX);
   const [swipeDirection, setSwipeDirection] = React.useState(null);
   const [isVideoDetailOpen, setIsVideoDetailOpen] = React.useState(false);
   const totalVideosCount = data.length;
@@ -29,26 +29,26 @@ function App () {
 
   const swipeAction = (dir) => {
     
-    if (dir === 'down') {
+    if (dir === SWIPE_DOWN) {
       if (currentVideoIndex === 0) return; // do nothing
       if (currentVideoIndex > 0) {
         setCurrentVideoIndex(prevState => prevState-1);
       }
     }
 
-    if (dir === 'up') {
+    if (dir === SWIPE_UP) {
       if (currentVideoIndex === totalVideosCount - 1) return; // do nothing
       if (currentVideoIndex < totalVideosCount) {
         setCurrentVideoIndex(prevState => prevState+1);
       }
     }
 
-    if (dir === 'right') {
-      setIsVideoDetailOpen(true);
+    if (dir === SWIPE_LEFT) {
+      // do nothing for now
     }
 
-    if (dir === 'left') {
-       isVideoDetailOpen && setIsVideoDetailOpen(false);
+    if (dir === SWIPE_RIGHT) {
+      setIsVideoDetailOpen(true);
     }
     
     setSwipeDirection(null);
@@ -61,14 +61,21 @@ function App () {
 
   return (
     <div className="App">
+      <SwipeableItem setSwipeDirection={setSwipeDirection}>
       {
         isVideoDetailOpen && (
-          <VideoDetails video={getVideo()} />
-        )
+          <VideoDetails 
+            video={getVideo()} 
+            setIsVideoDetailOpen={setIsVideoDetailOpen} 
+            isVideoDetailOpen={isVideoDetailOpen}
+          />
+          )
       }
-      <SwipeableItem setSwipeDirection={setSwipeDirection}>
-        <VideoItem video={getVideo()} />
+      {
+        !isVideoDetailOpen && <VideoItem video={getVideo()} />
+      }
       </SwipeableItem>
+      
     </div>
   );
 }

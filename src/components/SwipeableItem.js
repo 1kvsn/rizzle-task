@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+import {  
+  SWIPE_DOWN, 
+  SWIPE_UP, 
+  SWIPE_LEFT, 
+  SWIPE_RIGHT 
+} from './../constants';
+
 function SwipeableItem (props) {
 	const [data, setData] = useState({
 		startX: null,
@@ -37,19 +44,19 @@ function SwipeableItem (props) {
 
 		if ( Math.abs(xDiff) > Math.abs(yDiff) ) {
 				if ( xDiff > 0 ) {
-						// console.log('left swipe <<<<=========')
-						props.setSwipeDirection('left')
+						// left swipe
+						props.setSwipeDirection(SWIPE_LEFT)
 				} else {
-						// console.log('=========>>>>> right swipe')
-						props.setSwipeDirection('right')
+						// right swipe
+						props.setSwipeDirection(SWIPE_RIGHT)
 				}
 		} else {
 				if ( yDiff > 0 ) {
 						// up swipe
-						props.setSwipeDirection('up')
+						props.setSwipeDirection(SWIPE_UP)
 				} else { 
 						// down swipe
-						props.setSwipeDirection('down')
+						props.setSwipeDirection(SWIPE_DOWN)
 				}
 		}
 
