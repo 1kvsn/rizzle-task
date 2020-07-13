@@ -65,7 +65,6 @@ function SwipeableItem (props) {
 		console.log(xDiff, yDiff)
 
 		// e.preventDefault();
-		// console.log(e.clientX, e.clientY, 'move');
 		
 		// performs reset
 		setData({
@@ -75,6 +74,17 @@ function SwipeableItem (props) {
 		})
 	}
 
+	const handleTouchStart = e => {
+		setData({
+			startX: e.targetTouches[0].clientX,
+			startY: e.targetTouches[0].clientY,
+		})
+	}
+
+	const handleTouchMove = e => {
+		const { clientX, clientY } = e.targetTouches[0];
+		handleMouseMove({clientX, clientY});
+	}
 
 
 
@@ -83,6 +93,10 @@ function SwipeableItem (props) {
 			onMouseDown={handleMouseDown}
 			onMouseUp={handleMouseUp}
 			onMouseMove={handleMouseMove}
+
+			onTouchStart={handleTouchStart}
+			// onTouchEnd={handleTouchEnd}
+			onTouchMove={handleTouchMove}
 		>
 			{props.children}
 		</div>

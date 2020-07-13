@@ -9,7 +9,8 @@ import SwipeableItem from './components/SwipeableItem';
 
 import { 
   DEFAULT_VIDEO_INDEX, 
-  SWIPE_DOWN, SWIPE_UP, 
+  SWIPE_DOWN, 
+  SWIPE_UP, 
   SWIPE_LEFT, 
   SWIPE_RIGHT 
 } from './constants';
