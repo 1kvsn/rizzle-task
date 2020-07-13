@@ -6,7 +6,7 @@ function SwipeableItem (props) {
 		startY: null,
 		endX: null,
 		endY: null,
-		swipeDirection: null,
+		// swipeDirection: null,
 	})
 
 	const handleMouseDown = e => {
@@ -40,11 +40,11 @@ function SwipeableItem (props) {
 				if ( xDiff > 0 ) {
 						/* left swipe */ 
 						console.log('left swipe <<<<=========')
-						setData({swipeDirection: 'left'})
+						props.setSwipeDirection('left')
 				} else {
 						/* right swipe */
 						console.log('=========>>>>> right swipe')
-						setData({swipeDirection: 'right'})
+						props.setSwipeDirection('right')
 				}
 		} else {
 				if ( yDiff > 0 ) {
@@ -52,19 +52,17 @@ function SwipeableItem (props) {
 						console.log('^')
 						console.log('^')
 						console.log('^')
-						setData({swipeDirection: 'up'})
+						props.setSwipeDirection('up')
 				} else { 
 						/* down swipe */
 						console.log('v');
 						console.log('v');
 						console.log('v');
-						setData({swipeDirection: 'down'})
+						props.setSwipeDirection('down')
 				}
 		}
 
 		console.log(xDiff, yDiff)
-		console.log(data.swipeDirection)
-
 
 		// e.preventDefault();
 		// console.log(e.clientX, e.clientY, 'move');
@@ -73,7 +71,7 @@ function SwipeableItem (props) {
 		setData({
 			startX: null,
 			startY: null,
-			swipeDirection: null,
+			// swipeDirection: null,
 		})
 	}
 
@@ -86,7 +84,7 @@ function SwipeableItem (props) {
 			onMouseUp={handleMouseUp}
 			onMouseMove={handleMouseMove}
 		>
-			{React.cloneElement(props.children, { swipeDirection: data.swipeDirection })}
+			{props.children}
 		</div>
 		
 	)
