@@ -6,12 +6,11 @@ function SwipeableItem (props) {
 		startY: null,
 		endX: null,
 		endY: null,
-		// swipeDirection: null,
 	})
 
+	// mouse events for mouse compatibility
 	const handleMouseDown = e => {
 		e.preventDefault();
-		console.log(e.clientX, e.clientY);
 		setData({
 			startX: e.clientX,
 			startY: e.clientY,
@@ -38,31 +37,21 @@ function SwipeableItem (props) {
 
 		if ( Math.abs(xDiff) > Math.abs(yDiff) ) {
 				if ( xDiff > 0 ) {
-						/* left swipe */ 
-						console.log('left swipe <<<<=========')
+						// console.log('left swipe <<<<=========')
 						props.setSwipeDirection('left')
 				} else {
-						/* right swipe */
-						console.log('=========>>>>> right swipe')
+						// console.log('=========>>>>> right swipe')
 						props.setSwipeDirection('right')
 				}
 		} else {
 				if ( yDiff > 0 ) {
-						/* up swipe */ 
-						console.log('^')
-						console.log('^')
-						console.log('^')
+						// up swipe
 						props.setSwipeDirection('up')
 				} else { 
-						/* down swipe */
-						console.log('v');
-						console.log('v');
-						console.log('v');
+						// down swipe
 						props.setSwipeDirection('down')
 				}
 		}
-
-		console.log(xDiff, yDiff)
 
 		// e.preventDefault();
 		
@@ -70,10 +59,10 @@ function SwipeableItem (props) {
 		setData({
 			startX: null,
 			startY: null,
-			// swipeDirection: null,
 		})
 	}
 
+	// Touch events
 	const handleTouchStart = e => {
 		setData({
 			startX: e.targetTouches[0].clientX,

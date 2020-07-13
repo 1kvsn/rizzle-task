@@ -17,7 +17,7 @@ import {
 
 
 function App () {
-  const [currentVideoIndex, setCurrentVideoIndex] = React.useState(0);
+  const [currentVideoIndex, setCurrentVideoIndex] = React.useState(20);
   const [swipeDirection, setSwipeDirection] = React.useState(null);
   const [isVideoDetailOpen, setIsVideoDetailOpen] = React.useState(false);
   const totalVideosCount = data.length;
@@ -28,11 +28,10 @@ function App () {
 
 
   const swipeAction = (dir) => {
-    console.log('swipe action running')
+    
     if (dir === 'down') {
       if (currentVideoIndex === 0) return; // do nothing
       if (currentVideoIndex > 0) {
-        console.log('inside DOWN')
         setCurrentVideoIndex(prevState => prevState-1);
       }
     }
@@ -40,7 +39,6 @@ function App () {
     if (dir === 'up') {
       if (currentVideoIndex === totalVideosCount - 1) return; // do nothing
       if (currentVideoIndex < totalVideosCount) {
-        console.log('inside UP UP')
         setCurrentVideoIndex(prevState => prevState+1);
       }
     }
@@ -63,8 +61,13 @@ function App () {
 
   return (
     <div className="App">
+      {
+        isVideoDetailOpen && (
+          <VideoDetails video={getVideo()} />
+        )
+      }
       <SwipeableItem setSwipeDirection={setSwipeDirection}>
-        {isVideoDetailOpen ? <VideoDetails video={getVideo()} /> : <VideoItem video={getVideo()} />}
+        <VideoItem video={getVideo()} />
       </SwipeableItem>
     </div>
   );
